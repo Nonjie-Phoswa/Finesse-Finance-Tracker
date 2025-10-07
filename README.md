@@ -28,7 +28,7 @@ This version focuses on **frontend design, interactive dashboards and AI-powered
   Users receive personalized tips to improve financial decisions.
 
 - 🌐 **Netlify Hosting**  
-  The app is deployed and accessible online at: [Finesse Live](https://your-netlify-link.netlify.app)
+  The app is deployed and accessible online at: [Finesse Live](https://finesse-finance-tracker.netlify.app/)
 
 ---
 
@@ -69,6 +69,7 @@ This version focuses on **frontend design, interactive dashboards and AI-powered
 
 ```bash
 git clone https://github.com/Nonjie-Phoswa/Finesse-Finance-Tracker.git
+cd Finesse-Finance-Tracker
 ```
 
 2. **To enable AI responses:**
