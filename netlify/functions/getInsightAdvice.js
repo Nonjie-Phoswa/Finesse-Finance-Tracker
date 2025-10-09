@@ -10,10 +10,18 @@ exports.handler = async function (event) {
 
   let topic = event.queryStringParameters.topic.trim();
 
-  let prompt = `You are a financial advisor. Provide concise and clear financial advice on the following topic: ${topic}.`;
+  let prompt = `
+You are Fin, an AI financial assistant.
+Analyze the user's monthly spending summary and give one short insight that helps them improve their financial habits.
+Spending summary: ${topic}.
+`;
 
-  let context =
-    "Make it professional and less than 120 words.";
+  let context = `
+Keep the tone positive, encouraging and professional.
+Focus on a single useful observation, not a list.
+Reply in 1–2 sentences (under 50 words).
+Avoid generic advice — base your insight directly on the spending summary provided.
+`;
 
   let url = `https://api.shecodes.io/ai/v1/generate?prompt=${encodeURIComponent(
     prompt
