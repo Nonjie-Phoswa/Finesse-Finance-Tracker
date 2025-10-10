@@ -73,7 +73,7 @@
     <main class="container ai-assistant-page">
       <div class="page-title">
         <span>🤖</span>
-        <h2>Fin - Your AI Finance Assistant</h2>
+        <h2>Fin - Your Financial Assistant</h2>
       </div>
 
       <div class="ai-container">
@@ -85,23 +85,31 @@
           </div>
           <div class="chat-messages" id="chat-messages">
             <div class="message ai-message">
-              Hi there! I'm Fin, your AI finance assistant. How can I help you
-              with your finances today?
+              Hi there! I'm Fin, your financial assistant. How can I help you today?
             </div>
-            <div class="message user-message">
-              How can I save more money each month?
-            </div>
-            <div class="message ai-message">
-              Great question! Based on your spending patterns, I'd recommend
-              creating a weekly meal plan to reduce food expenses. You could
-              save up to R500 per month by planning ahead!
-            </div>
+
           </div>
           <div class="typing-indicator" id="typing-indicator">
             <div class="typing-dots">
               <div class="typing-dot"></div>
               <div class="typing-dot"></div>
               <div class="typing-dot"></div>
+            </div>
+          </div>
+          <div class="message-templates">
+            <div class="template-buttons">
+              <button class="template-btn" data-template="analyze-spending">
+                📊 Analyze my spending
+              </button>
+              <button class="template-btn" data-template="saving-tips">
+                💰 Give me saving tips
+              </button>
+              <button class="template-btn" data-template="budget-review">
+                🎯 Review my budget
+              </button>
+              <button class="template-btn" data-template="debt-strategy">
+                💳 Help with debt strategy
+              </button>
             </div>
           </div>
           <div class="chat-input-container">
@@ -163,7 +171,7 @@
             </div>
           </div>
 
-          <div class="message-templates">
+          <!-- <div class="message-templates">
             <div class="templates-header">
               <span>💬</span>
               <h4>Quick Message Templates</h4>
@@ -182,7 +190,7 @@
                 💳 Help with debt strategy
               </button>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </main>

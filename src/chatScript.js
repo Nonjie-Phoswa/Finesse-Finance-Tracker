@@ -21,20 +21,18 @@ document.addEventListener("DOMContentLoaded", function () {
     "current-month"
   ).textContent = `${currentMonth} ${currentYear}`;
 
-  // Initialize AI Assistant
   initializeAIAssistant();
 
-  // Set up event listeners
   setupEventListeners();
 });
 
-// Initialize AI Assistant
+
 function initializeAIAssistant() {
   // Add sample conversation if empty
   const chatMessages = document.getElementById("chat-messages");
   if (chatMessages.children.length === 0) {
     addMessage(
-      "Hi there! I'm Fin, your AI finance assistant. How can I help you with your finances today?",
+      "Hi there! I'm Fin, your AI finance assistant. How can I help you today?",
       "ai"
     );
   }
