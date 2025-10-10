@@ -37,7 +37,7 @@ body {
 
 /* App Banner */
 .app-banner {
-  background-color: var(--teal);
+  background: linear-gradient(135deg, var(--teal), var(--dark-teal));
   color: white;
   padding: 15px 0;
   text-align: center;

@@ -68,10 +68,246 @@
         </div>
       </div>
     </nav>
-    <main class="container">
-      <h1>🚧 This page is still under construction.</h1>
-      <h2>Check back later — exciting things are on the way!</h2>
+    
+    <!-- Transactions & Accounts Page Content -->
+    <main class="container transactions-page">
+      <div class="page-title">
+        <span>💰</span>
+        <h2>Transactions & Accounts</h2>
+      </div>
+
+      <!-- Summary Section -->
+      <section class="summary-section">
+        <div class="summary-card">
+          <div class="summary-title">Total Income</div>
+          <div class="summary-value income-value">R12,450</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-title">Total Expenses</div>
+          <div class="summary-value expense-value">R8,750</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-title">Available Balance</div>
+          <div class="summary-value balance-value">R15,230</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-title">Total Invested</div>
+          <div class="summary-value invested-value">R28,500</div>
+        </div>
+      </section>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Left Column -->
+        <div class="left-column">
+          <!-- Accounts Section -->
+          <section class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <span>🏦</span>
+                Accounts
+              </h3>
+              <div class="card-actions">
+                <button class="btn" id="add-account-btn">
+                  <span>+</span>
+                  Add Account
+                </button>
+              </div>
+            </div>
+            <div class="accounts-list">
+              <div class="account-item">
+                <div class="account-info">
+                  <div class="account-name">Capitec Savings</div>
+                  <div class="account-meta">Last updated: 2 days ago</div>
+                </div>
+                <div class="account-balance">R8,250</div>
+              </div>
+              <div class="account-item">
+                <div class="account-info">
+                  <div class="account-name">FNB Current Account</div>
+                  <div class="account-meta">Last updated: Today</div>
+                </div>
+                <div class="account-balance">R4,980</div>
+              </div>
+              <div class="account-item">
+                <div class="account-info">
+                  <div class="account-name">Cash on Hand</div>
+                  <div class="account-meta">Last updated: 5 days ago</div>
+                </div>
+                <div class="account-balance">R2,000</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Investments Section -->
+          <section class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <span>📈</span>
+                Investments
+              </h3>
+              <div class="card-actions">
+                <button class="btn btn-outline" id="view-investments-btn">
+                  View All
+                </button>
+              </div>
+            </div>
+            <div class="investments-list">
+              <div class="investment-item">
+                <div class="investment-info">
+                  <div class="investment-name">Satrix Top 40 ETF</div>
+                  <div class="investment-type">Equity Fund</div>
+                </div>
+                <div class="investment-value">R12,500</div>
+              </div>
+              <div class="investment-item">
+                <div class="investment-info">
+                  <div class="investment-name">Fixed Deposit</div>
+                  <div class="investment-type">Bank Investment</div>
+                </div>
+                <div class="investment-value">R8,000</div>
+              </div>
+              <div class="investment-item">
+                <div class="investment-info">
+                  <div class="investment-name">Tax-Free Savings</div>
+                  <div class="investment-type">Savings Account</div>
+                </div>
+                <div class="investment-value">R8,000</div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+          <!-- Transactions Section -->
+          <section class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <span>📝</span>
+                Recent Transactions
+              </h3>
+              <div class="card-actions">
+                <button class="btn" id="add-transaction-btn">
+                  <span>+</span>
+                  Add Transaction
+                </button>
+              </div>
+            </div>
+            <div class="transactions-filters">
+              <select class="filter-select" id="account-filter">
+                <option value="all">All Accounts</option>
+                <option value="capitec">Capitec Savings</option>
+                <option value="fnb">FNB Current Account</option>
+                <option value="cash">Cash on Hand</option>
+              </select>
+              <select class="filter-select" id="type-filter">
+                <option value="all">All Types</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+            </div>
+            <div class="transactions-list">
+              <div class="transaction-item">
+                <div class="transaction-main">
+                  <div class="transaction-icon income-icon">💰</div>
+                  <div class="transaction-details">
+                    <div class="transaction-category">Salary</div>
+                    <div class="transaction-meta">
+                      <span class="transaction-date">Oct 15, 2025</span>
+                      <span class="transaction-account">
+                        <span>🏦</span>
+                        FNB Current Account
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="transaction-amount income-amount">+R8,500</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-main">
+                  <div class="transaction-icon expense-icon">🍔</div>
+                  <div class="transaction-details">
+                    <div class="transaction-category">Food & Dining</div>
+                    <div class="transaction-meta">
+                      <span class="transaction-date">Oct 14, 2025</span>
+                      <span class="transaction-account">
+                        <span>💳</span>
+                        Capitec Savings
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="transaction-amount expense-amount">-R350</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-main">
+                  <div class="transaction-icon expense-icon">🏠</div>
+                  <div class="transaction-details">
+                    <div class="transaction-category">Rent</div>
+                    <div class="transaction-meta">
+                      <span class="transaction-date">Oct 10, 2025</span>
+                      <span class="transaction-account">
+                        <span>🏦</span>
+                        FNB Current Account
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="transaction-amount expense-amount">-R4,500</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-main">
+                  <div class="transaction-icon income-icon">💼</div>
+                  <div class="transaction-details">
+                    <div class="transaction-category">Freelance Work</div>
+                    <div class="transaction-meta">
+                      <span class="transaction-date">Oct 8, 2025</span>
+                      <span class="transaction-account">
+                        <span>🏦</span>
+                        FNB Current Account
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="transaction-amount income-amount">+R2,500</div>
+              </div>
+              <div class="transaction-item">
+                <div class="transaction-main">
+                  <div class="transaction-icon expense-icon">🚗</div>
+                  <div class="transaction-details">
+                    <div class="transaction-category">Transport</div>
+                    <div class="transaction-meta">
+                      <span class="transaction-date">Oct 5, 2025</span>
+                      <span class="transaction-account">
+                        <span>💳</span>
+                        Capitec Savings
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="transaction-amount expense-amount">-R280</div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
     </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <p>&copy; 2025 Finesse - Personal Finance Tracker</p>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Support</a>
+            <a href="#" class="footer-link">About Us</a>
+          </div>
+        </div>
+      </div>
+    </footer>
     <script type="module" src="src/transactionScript.js"></script>
   </body>
 </html>
