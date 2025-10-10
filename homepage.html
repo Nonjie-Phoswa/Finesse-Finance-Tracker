@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing page</title>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <!-- App Banner -->
+    <div class="app-banner">
+      <h1>Finesse</h1>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="greeting">
+            <h2>Hey Nonjie 👋</h2>
+            <p id="current-month">October 2025</p>
+          </div>
+          <div class="header-icons">
+            <button class="icon-btn" id="profile-btn">👤</button>
+            <button class="icon-btn" id="notifications-btn">
+              🔔
+              <span class="notification-dot"></span>
+            </button>
+            <button class="icon-btn" id="settings-btn">⚙️</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+      <div class="container">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+        <div class="nav-container" id="nav-container">
+          <a href="#" class="nav-item active">
+            <span class="nav-icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">💰</span>
+            <span>Transactions</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">📈</span>
+            <span>Analytics</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">🎯</span>
+            <span>Budgets</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">🎁</span>
+            <span>Goals</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">🤖</span>
+            <span>AI Assistant</span>
+          </a>
+          <a href="#" class="nav-item">
+            <span class="nav-icon">⚙️</span>
+            <span>Settings</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Dashboard Content -->
+    <main class="container">
+      <div class="dashboard">
+        <!-- Left Column -->
+        <div class="left-column">
+          <!-- Monthly Overview -->
+          <section class="card monthly-overview">
+            <h2 class="card-title">Monthly Overview</h2>
+            <div class="progress-ring-container">
+              <svg class="progress-ring" width="200" height="200">
+                <circle
+                  class="progress-ring-bg"
+                  cx="100"
+                  cy="100"
+                  r="90"
+                ></circle>
+                <circle
+                  class="progress-ring-fill"
+                  cx="100"
+                  cy="100"
+                  r="90"
+                ></circle>
+              </svg>
+              <div class="progress-text">
+                <div class="progress-amount" id="remaining-amount">R2,500</div>
+                <div class="progress-subtext">left from R8,000</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Spending Breakdown -->
+          <section class="card">
+            <h2 class="card-title">Spending Breakdown</h2>
+            <div class="spending-breakdown">
+              <!-- Food Category -->
+              <div class="category-item">
+                <div class="category-progress">
+                  <svg class="category-ring" width="60" height="60">
+                    <circle
+                      class="category-ring-bg"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                    ></circle>
+                    <circle
+                      class="category-ring-fill food-fill"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                      stroke="#FF9E80"
+                    ></circle>
+                  </svg>
+                  <div class="category-icon">🍔</div>
+                </div>
+                <div class="category-name">Food</div>
+              </div>
+
+              <!-- Housing Category -->
+              <div class="category-item">
+                <div class="category-progress">
+                  <svg class="category-ring" width="60" height="60">
+                    <circle
+                      class="category-ring-bg"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                    ></circle>
+                    <circle
+                      class="category-ring-fill housing-fill"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                      stroke="#81C784"
+                    ></circle>
+                  </svg>
+                  <div class="category-icon">🏠</div>
+                </div>
+                <div class="category-name">Housing</div>
+              </div>
+
+              <!-- Clothing Category -->
+              <div class="category-item">
+                <div class="category-progress">
+                  <svg class="category-ring" width="60" height="60">
+                    <circle
+                      class="category-ring-bg"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                    ></circle>
+                    <circle
+                      class="category-ring-fill clothing-fill"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                      stroke="#64B5F6"
+                    ></circle>
+                  </svg>
+                  <div class="category-icon">👕</div>
+                </div>
+                <div class="category-name">Clothing</div>
+              </div>
+
+              <!-- Transport Category -->
+              <div class="category-item">
+                <div class="category-progress">
+                  <svg class="category-ring" width="60" height="60">
+                    <circle
+                      class="category-ring-bg"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                    ></circle>
+                    <circle
+                      class="category-ring-fill transport-fill"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                      stroke="#FFD54F"
+                    ></circle>
+                  </svg>
+                  <div class="category-icon">🚗</div>
+                </div>
+                <div class="category-name">Transport</div>
+              </div>
+
+              <!-- Entertainment Category -->
+              <div class="category-item">
+                <div class="category-progress">
+                  <svg class="category-ring" width="60" height="60">
+                    <circle
+                      class="category-ring-bg"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                    ></circle>
+                    <circle
+                      class="category-ring-fill entertainment-fill"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                      stroke="#BA68C8"
+                    ></circle>
+                  </svg>
+                  <div class="category-icon">🎬</div>
+                </div>
+                <div class="category-name">Entertainment</div>
+              </div>
+
+              <!-- Other Category -->
+              <div class="category-item">
+                <div class="category-progress">
+                  <svg class="category-ring" width="60" height="60">
+                    <circle
+                      class="category-ring-bg"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                    ></circle>
+                    <circle
+                      class="category-ring-fill other-fill"
+                      cx="30"
+                      cy="30"
+                      r="27"
+                      stroke="#4DB6AC"
+                    ></circle>
+                  </svg>
+                  <div class="category-icon">📦</div>
+                </div>
+                <div class="category-name">Other</div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+          <!-- AI Advice Section -->
+          <section class="card ai-advice">
+            <h2 class="card-title">💡 AI Insight</h2>
+            <p class="ai-message">
+              You've spent quite a bit on food this month. Try planning meals
+              ahead to save more.
+            </p>
+            <button class="ai-button" id="ai-advice-btn">
+              🤖 Ask Fin for Advice
+            </button>
+          </section>
+
+          <!-- Quick Actions -->
+          <section class="card">
+            <h2 class="card-title">Quick Actions</h2>
+            <div class="quick-actions">
+              <button class="action-btn" id="add-income-btn">
+                <span class="action-icon">➕</span>
+                <span class="action-label">Add Income</span>
+              </button>
+              <button class="action-btn" id="add-expense-btn">
+                <span class="action-icon">➖</span>
+                <span class="action-label">Add Expense</span>
+              </button>
+              <button class="action-btn" id="view-budgets-btn">
+                <span class="action-icon">📅</span>
+                <span class="action-label">View Budgets</span>
+              </button>
+              <button class="action-btn" id="get-advice-btn">
+                <span class="action-icon">🤖</span>
+                <span class="action-label">Get Advice</span>
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <p>&copy; 2025 Finesse - Personal Finance Tracker</p>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Support</a>
+            <a href="#" class="footer-link">About Us</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal for AI Advice -->
+    <div class="modal" id="ai-modal">
+      <div class="modal-content">
+        <button class="modal-close" id="close-ai-modal">×</button>
+        <h2 class="modal-title">💡 Fin's Advice</h2>
+        <p class="modal-text">
+          Based on your spending patterns, I recommend creating a weekly meal
+          plan to reduce food expenses. You could save up to R500 per month by
+          planning ahead and avoiding last-minute takeout orders.
+        </p>
+        <div class="modal-actions">
+          <button class="modal-btn modal-btn-secondary" id="close-modal-btn">
+            Close
+          </button>
+          <button class="modal-btn modal-btn-primary" id="more-advice-btn">
+            More Tips
+          </button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="src/script.js"></script>
+  </body>
+</html>
