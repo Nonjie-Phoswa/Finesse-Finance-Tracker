@@ -8,16 +8,16 @@ exports.handler = async function (event) {
     };
   }
 
-  let topic = event.queryStringParameters.topic.trim();
+  let message = event.queryStringParameters.message.trim();
 
   let prompt = `
-You are Fin, a friendly and knowledgeable personal finance chatbot.
-Respond conversationally to the following message from the user: ${topic}.
+You are Fin, a friendly and knowledgeable personal finance chatbot for a finance tracker called Finesse.
+Respond conversationally to the following message from the user: ${message}
 `;
 
   let context = `
-Make your tone warm, encouraging, and easy to understand.
-Avoid sounding robotic or overly formal.
+Make your tone warm, encouraging and easy to understand.
+Avoid sounding robotic or overly formal. Don't mention you are an AI and don't greet the user unless if they mention who they are.
 Keep answers under 120 words unless the user requests more detail.
 Include examples or simple steps when possible.
 End responses with a short motivational or practical note.

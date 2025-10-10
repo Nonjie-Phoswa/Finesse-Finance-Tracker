@@ -184,20 +184,23 @@ function sendMessage(message) {
   // Scroll to bottom
   scrollToBottom();
 
-  // Simulate API call with timeout
-  setTimeout(() => {
-    // Hide typing indicator
-    typingIndicator.style.display = "none";
+  // Call Netlify AI function
+  fetch(`/.netlify/functions/getChatBotAdvice?message=${encodeURIComponent(message)}`)
+    .then((res) => res.json())
+    .then((data) => {
+      typingIndicator.style.display = "none";
 
-    // Generate AI response
-    const response = generateAIResponse(message);
+      const aiResponse =
+        data.answer || data.output || "Sorry, I couldn’t process that.";
 
-    // Add AI response to chat
-    addMessage(response, "ai");
-
-    // Scroll to bottom
-    scrollToBottom();
-  }, 1500);
+      addMessage(aiResponse, "ai");
+      scrollToBottom();
+    })
+    .catch((error) => {
+      typingIndicator.style.display = "none";
+      addMessage("⚠️ There was an error connecting to the financial advisor.", "ai");
+      console.error(error);
+    });
 }
 
 // Add message to chat
@@ -206,28 +209,19 @@ function addMessage(text, sender) {
   const messageDiv = document.createElement("div");
   messageDiv.classList.add("message");
   messageDiv.classList.add(sender === "user" ? "user-message" : "ai-message");
-  messageDiv.textContent = text;
+  messageDiv.innerHTML = formatMessage(text);
   chatMessages.appendChild(messageDiv);
+}
+
+function formatMessage(text) {
+  let formatted = text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+  formatted = formatted.replace(/\n/g, "<br>");
+
+  return formatted;
 }
 
 // Scroll chat to bottom
 function scrollToBottom() {
   const chatMessages = document.getElementById("chat-messages");
   chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-// Generate AI response (simulated)
-function generateAIResponse(message) {
-  const responses = [
-    "Based on your spending patterns, I'd recommend creating a weekly meal plan to reduce food expenses. You could save up to R500 per month by planning ahead!",
-    "I notice you're spending quite a bit on entertainment. Consider setting a monthly limit for leisure activities to better align with your savings goals.",
-    "Your transportation costs seem high. Have you considered carpooling or using public transport a few days a week to cut down on fuel expenses?",
-    "It looks like you're doing well with your housing budget! Keep up the good work. To save even more, you could look into reducing utility costs with energy-efficient habits.",
-    "Based on your income and expenses, you could potentially save an additional 15% each month by optimizing your spending in a few key areas. Would you like me to provide a detailed breakdown?",
-    "I see you've been consistent with your budget tracking. That's excellent! To accelerate your savings, consider setting up automatic transfers to your savings account right after you receive your income.",
-    "Your grocery spending has increased this month. Planning meals and creating a shopping list before going to the store can help you avoid impulse purchases and stay within budget.",
-  ];
-
-  // Return a random response for simulation
-  return responses[Math.floor(Math.random() * responses.length)];
 }
