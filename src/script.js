@@ -127,7 +127,6 @@ function setupEventListeners() {
     "add-income-btn",
     "add-expense-btn",
     "view-budgets-btn",
-    "get-advice-btn",
   ];
 
   quickActionButtons.forEach((buttonId) => {
@@ -139,6 +138,13 @@ function setupEventListeners() {
           .replace(/-/g, " ")}" feature would open here!`
       );
     });
+  });
+
+  const askFinButton = document.getElementById("get-advice-btn");
+
+  askFinButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.href = "chatBot.html";
   });
 
   // Header icon buttons (placeholder functionality)
