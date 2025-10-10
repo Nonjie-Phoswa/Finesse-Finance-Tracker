@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ask Fin</title>
+    <link rel="stylesheet" href="src/chatStyle.css" />
+  </head>
+  <body>
+    <!-- App Banner -->
+    <div class="app-banner">
+      <h1>Finesse</h1>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="greeting">
+            <h2>Hey Nonjie 👋</h2>
+            <p id="current-month">October 2025</p>
+          </div>
+          <div class="header-icons">
+            <button class="icon-btn" id="profile-btn">👤</button>
+            <button class="icon-btn" id="notifications-btn">
+              🔔
+              <span class="notification-dot"></span>
+            </button>
+            <button class="icon-btn" id="settings-btn">⚙️</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+      <div class="container">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+        <div class="nav-container" id="nav-container">
+          <a href="dashboard.html" class="nav-item">
+            <span class="nav-icon">📊</span>
+            <span>Dashboard</span>
+          </a>
+          <a href="transactions.html" class="nav-item">
+            <span class="nav-icon">💰</span>
+            <span>Transactions</span>
+          </a>
+          <a href="analytics.html" class="nav-item">
+            <span class="nav-icon">📈</span>
+            <span>Analytics</span>
+          </a>
+          <a href="budgets.html" class="nav-item">
+            <span class="nav-icon">🎯</span>
+            <span>Budgets</span>
+          </a>
+          <a href="goals.html" class="nav-item">
+            <span class="nav-icon">🎁</span>
+            <span>Goals</span>
+          </a>
+          <a href="ai-assistant.html" class="nav-item active">
+            <span class="nav-icon">🤖</span>
+            <span>AI Assistant</span>
+          </a>
+          <a href="settings.html" class="nav-item">
+            <span class="nav-icon">⚙️</span>
+            <span>Settings</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- AI Assistant Page Content -->
+    <main class="container ai-assistant-page">
+      <div class="page-title">
+        <span>🤖</span>
+        <h2>Fin - Your AI Finance Assistant</h2>
+      </div>
+
+      <div class="ai-container">
+        <!-- Chat Container -->
+        <div class="chat-container">
+          <div class="chat-header">
+            <span>🤖</span>
+            <h3>Chat with Fin</h3>
+          </div>
+          <div class="chat-messages" id="chat-messages">
+            <div class="message ai-message">
+              Hi there! I'm Fin, your AI finance assistant. How can I help you
+              with your finances today?
+            </div>
+            <div class="message user-message">
+              How can I save more money each month?
+            </div>
+            <div class="message ai-message">
+              Great question! Based on your spending patterns, I'd recommend
+              creating a weekly meal plan to reduce food expenses. You could
+              save up to R500 per month by planning ahead!
+            </div>
+          </div>
+          <div class="typing-indicator" id="typing-indicator">
+            <div class="typing-dots">
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+            </div>
+          </div>
+          <div class="chat-input-container">
+            <input
+              type="text"
+              class="chat-input"
+              id="chat-input"
+              placeholder="Type your message here..."
+            />
+            <button class="send-button" id="send-button">➤</button>
+          </div>
+        </div>
+
+        <!-- FAQ Panel -->
+        <div class="faq-panel">
+          <div class="faq-header">
+            <span>❓</span>
+            <h3>Frequently Asked Questions</h3>
+          </div>
+
+          <div class="faq-categories">
+            <button class="category-btn active" data-category="all">All</button>
+            <button class="category-btn" data-category="budgeting">
+              Budgeting
+            </button>
+            <button class="category-btn" data-category="saving">Saving</button>
+            <button class="category-btn" data-category="investing">
+              Investing
+            </button>
+            <button class="category-btn" data-category="debt">Debt</button>
+          </div>
+
+          <div class="faq-questions">
+            <div class="faq-question" data-category="budgeting">
+              <h4>📊 How do I create a realistic budget?</h4>
+              <p>
+                Learn the steps to create a budget that works for your lifestyle
+              </p>
+            </div>
+            <div class="faq-question" data-category="saving">
+              <h4>💰 What's the best way to save money as a student?</h4>
+              <p>Student-friendly saving strategies that actually work</p>
+            </div>
+            <div class="faq-question" data-category="budgeting">
+              <h4>🎯 How can I stick to my budget?</h4>
+              <p>Tips for maintaining financial discipline</p>
+            </div>
+            <div class="faq-question" data-category="investing">
+              <h4>📈 Should I start investing with a small amount?</h4>
+              <p>Understanding investment options for beginners</p>
+            </div>
+            <div class="faq-question" data-category="debt">
+              <h4>💳 What's the best strategy to pay off student loans?</h4>
+              <p>Effective approaches to managing student debt</p>
+            </div>
+            <div class="faq-question" data-category="saving">
+              <h4>🛒 How can I reduce my grocery spending?</h4>
+              <p>Smart shopping strategies to cut food costs</p>
+            </div>
+          </div>
+
+          <div class="message-templates">
+            <div class="templates-header">
+              <span>💬</span>
+              <h4>Quick Message Templates</h4>
+            </div>
+            <div class="template-buttons">
+              <button class="template-btn" data-template="analyze-spending">
+                📊 Analyze my spending
+              </button>
+              <button class="template-btn" data-template="saving-tips">
+                💰 Give me saving tips
+              </button>
+              <button class="template-btn" data-template="budget-review">
+                🎯 Review my budget
+              </button>
+              <button class="template-btn" data-template="debt-strategy">
+                💳 Help with debt strategy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <p>&copy; 2025 Finesse - Personal Finance Tracker</p>
+          <div class="footer-links">
+            <a href="#" class="footer-link">Privacy Policy</a>
+            <a href="#" class="footer-link">Terms of Service</a>
+            <a href="#" class="footer-link">Support</a>
+            <a href="#" class="footer-link">About Us</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="src/chatScript.js"></script>
+  </body>
+</html>
