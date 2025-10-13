@@ -7,12 +7,10 @@
     <link rel="stylesheet" href="src/transactionStyle.css" />
   </head>
   <body>
-    <!-- App Banner -->
     <div class="app-banner">
       <h1>Finesse</h1>
     </div>
 
-    <!-- Header Section -->
     <header>
       <div class="container">
         <div class="header-content">
@@ -68,7 +66,7 @@
         </div>
       </div>
     </nav>
-    
+
     <!-- Transactions & Accounts Page Content -->
     <main class="container transactions-page">
       <div class="page-title">
@@ -294,7 +292,234 @@
       </div>
     </main>
 
-    <!-- Footer -->
+    <div class="demo-container">
+      <div class="button-group">
+        <button class="demo-btn" id="open-view-more">
+          <span>📄</span>
+          View More
+        </button>
+      </div>
+    </div>
+
+    <!-- Add Account Modal -->
+    <div class="modal-overlay" id="add-account-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <span>🏦</span>
+            Add New Account
+          </h3>
+          <button class="modal-close" id="close-add-account">×</button>
+        </div>
+        <div class="modal-body">
+          <form id="add-account-form">
+            <div class="form-group">
+              <label for="account-name" class="form-label">Account Name</label>
+              <input
+                type="text"
+                id="account-name"
+                class="form-control"
+                placeholder="e.g., Capitec Savings"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="account-type" class="form-label">Account Type</label>
+              <select id="account-type" class="form-control" required>
+                <option value="" disabled selected>Select account type</option>
+                <option value="bank">Bank Account</option>
+                <option value="cash">Cash</option>
+                <option value="investment">Investment</option>
+                <option value="credit">Credit Card</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="initial-balance" class="form-label"
+                >Initial Balance</label
+              >
+              <input
+                type="number"
+                id="initial-balance"
+                class="form-control"
+                placeholder="0.00"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="cancel-add-account"
+          >
+            Cancel
+          </button>
+          <button type="submit" form="add-account-form" class="btn btn-primary">
+            Add Account
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Transaction Modal -->
+    <div class="modal-overlay" id="add-transaction-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <span>💰</span>
+            Add New Transaction
+          </h3>
+          <button class="modal-close" id="close-add-transaction">×</button>
+        </div>
+        <div class="modal-body">
+          <form id="add-transaction-form">
+            <div class="form-group">
+              <label for="transaction-type" class="form-label"
+                >Transaction Type</label
+              >
+              <select id="transaction-type" class="form-control" required>
+                <option value="" disabled selected>Select type</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="transaction-description" class="form-label"
+                >Description</label
+              >
+              <input
+                type="text"
+                id="transaction-description"
+                class="form-control"
+                placeholder="e.g., Groceries, Salary, etc."
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="transaction-amount" class="form-label">Amount</label>
+              <input
+                type="number"
+                id="transaction-amount"
+                class="form-control"
+                placeholder="0.00"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="transaction-date" class="form-label">Date</label>
+              <input
+                type="date"
+                id="transaction-date"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="transaction-category" class="form-label"
+                >Category</label
+              >
+              <select id="transaction-category" class="form-control" required>
+                <option value="" disabled selected>Select category</option>
+                <option value="food">Food & Dining</option>
+                <option value="transport">Transport</option>
+                <option value="bills">Bills & Utilities</option>
+                <option value="salary">Salary</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="shopping">Shopping</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="transaction-account" class="form-label"
+                >Account</label
+              >
+              <select id="transaction-account" class="form-control" required>
+                <option value="" disabled selected>Select account</option>
+                <option value="capitec">Capitec Savings</option>
+                <option value="fnb">FNB Current Account</option>
+                <option value="cash">Cash on Hand</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="cancel-add-transaction"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            form="add-transaction-form"
+            class="btn btn-primary"
+          >
+            Add Transaction
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="view-more-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <span>📄</span>
+            Transaction Details
+          </h3>
+          <button class="modal-close" id="close-view-more">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="detail-card">
+            <div class="detail-row">
+              <span class="detail-label">Description</span>
+              <span class="detail-value">Grocery Shopping</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Type</span>
+              <span class="detail-value expense-value">Expense</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Amount</span>
+              <span class="detail-value expense-value">-R350.00</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Date</span>
+              <span class="detail-value">October 14, 2025</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Category</span>
+              <span class="detail-value">Food & Dining</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Account</span>
+              <span class="detail-value">Capitec Savings</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Status</span>
+              <span class="detail-value">Completed</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="close-view-more-btn"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
     <footer>
       <div class="container">
         <div class="footer-content">

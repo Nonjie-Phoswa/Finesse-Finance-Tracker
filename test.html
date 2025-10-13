@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        /* CSS Variables for consistent theming */
+:root {
+  --mint-green: #a8e6cf;
+  --teal: #4db6ac;
+  --dark-teal: #00897b;
+  --light-gray: #f5f5f5;
+  --medium-gray: #e0e0e0;
+  --dark-gray: #424242;
+  --white: #ffffff;
+  --income-green: #4caf50;
+  --expense-red: #f44336;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --radius: 12px;
+  --transition: all 0.3s ease;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.demo-container {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  color: var(--dark-teal);
+  margin-bottom: 30px;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.demo-btn {
+  background-color: var(--teal);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-btn:hover {
+  background-color: var(--dark-teal);
+  transform: translateY(-2px);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--white);
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--medium-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--dark-teal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--dark-gray);
+  transition: var(--transition);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.modal-close:hover {
+  background-color: var(--light-gray);
+  color: var(--dark-teal);
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  padding: 20px;
+  border-top: 1px solid var(--medium-gray);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--dark-gray);
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--medium-gray);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px rgba(77, 182, 172, 0.2);
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23424242' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+/* Button Styles */
+.btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background-color: var(--teal);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-teal);
+}
+
+.btn-secondary {
+  background-color: var(--light-gray);
+  color: var(--dark-gray);
+}
+
+.btn-secondary:hover {
+  background-color: var(--medium-gray);
+}
+
+/* View More Modal Specific Styles */
+.detail-card {
+  background-color: var(--light-gray);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--medium-gray);
+}
+
+.detail-row:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: var(--dark-gray);
+}
+
+.detail-value {
+  font-weight: 600;
+}
+
+.income-value {
+  color: var(--income-green);
+}
+
+.expense-value {
+  color: var(--expense-red);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .modal-content {
+    width: 95%;
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 15px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .demo-btn {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="demo-container">
+      <div class="button-group">
+        <button class="demo-btn" id="open-add-account">
+          <span>+</span>
+          Add Account
+        </button>
+        <button class="demo-btn" id="open-add-transaction">
+          <span>+</span>
+          Add Transaction
+        </button>
+        <button class="demo-btn" id="open-view-more">
+          <span>📄</span>
+          View More
+        </button>
+      </div>
+    </div>
+
+    <!-- Add Account Modal -->
+    <div class="modal-overlay" id="add-account-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <span>🏦</span>
+            Add New Account
+          </h3>
+          <button class="modal-close" id="close-add-account">×</button>
+        </div>
+        <div class="modal-body">
+          <form id="add-account-form">
+            <div class="form-group">
+              <label for="account-name" class="form-label">Account Name</label>
+              <input
+                type="text"
+                id="account-name"
+                class="form-control"
+                placeholder="e.g., Capitec Savings"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="account-type" class="form-label">Account Type</label>
+              <select id="account-type" class="form-control" required>
+                <option value="" disabled selected>Select account type</option>
+                <option value="bank">Bank Account</option>
+                <option value="cash">Cash</option>
+                <option value="investment">Investment</option>
+                <option value="credit">Credit Card</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="initial-balance" class="form-label"
+                >Initial Balance</label
+              >
+              <input
+                type="number"
+                id="initial-balance"
+                class="form-control"
+                placeholder="0.00"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="cancel-add-account"
+          >
+            Cancel
+          </button>
+          <button type="submit" form="add-account-form" class="btn btn-primary">
+            Add Account
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Transaction Modal -->
+    <div class="modal-overlay" id="add-transaction-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <span>💰</span>
+            Add New Transaction
+          </h3>
+          <button class="modal-close" id="close-add-transaction">×</button>
+        </div>
+        <div class="modal-body">
+          <form id="add-transaction-form">
+            <div class="form-group">
+              <label for="transaction-type" class="form-label"
+                >Transaction Type</label
+              >
+              <select id="transaction-type" class="form-control" required>
+                <option value="" disabled selected>Select type</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="transaction-description" class="form-label"
+                >Description</label
+              >
+              <input
+                type="text"
+                id="transaction-description"
+                class="form-control"
+                placeholder="e.g., Groceries, Salary, etc."
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="transaction-amount" class="form-label">Amount</label>
+              <input
+                type="number"
+                id="transaction-amount"
+                class="form-control"
+                placeholder="0.00"
+                min="0"
+                step="0.01"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="transaction-date" class="form-label">Date</label>
+              <input
+                type="date"
+                id="transaction-date"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="transaction-category" class="form-label"
+                >Category</label
+              >
+              <select id="transaction-category" class="form-control" required>
+                <option value="" disabled selected>Select category</option>
+                <option value="food">Food & Dining</option>
+                <option value="transport">Transport</option>
+                <option value="bills">Bills & Utilities</option>
+                <option value="salary">Salary</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="shopping">Shopping</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="transaction-account" class="form-label"
+                >Account</label
+              >
+              <select id="transaction-account" class="form-control" required>
+                <option value="" disabled selected>Select account</option>
+                <option value="capitec">Capitec Savings</option>
+                <option value="fnb">FNB Current Account</option>
+                <option value="cash">Cash on Hand</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="cancel-add-transaction"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            form="add-transaction-form"
+            class="btn btn-primary"
+          >
+            Add Transaction
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="view-more-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">
+            <span>📄</span>
+            Transaction Details
+          </h3>
+          <button class="modal-close" id="close-view-more">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="detail-card">
+            <div class="detail-row">
+              <span class="detail-label">Description</span>
+              <span class="detail-value">Grocery Shopping</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Type</span>
+              <span class="detail-value expense-value">Expense</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Amount</span>
+              <span class="detail-value expense-value">-R350.00</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Date</span>
+              <span class="detail-value">October 14, 2025</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Category</span>
+              <span class="detail-value">Food & Dining</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Account</span>
+              <span class="detail-value">Capitec Savings</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-label">Status</span>
+              <span class="detail-value">Completed</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="close-view-more-btn"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Modal Elements
+      const addAccountModal = document.getElementById("add-account-modal");
+      const addTransactionModal = document.getElementById(
+        "add-transaction-modal"
+      );
+      const viewMoreModal = document.getElementById("view-more-modal");
+
+      // Open Modal Functions
+      function openAddAccountModal() {
+        addAccountModal.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+      }
+
+      function openAddTransactionModal() {
+        addTransactionModal.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+
+        // Set default date to today
+        const today = new Date().toISOString().split("T")[0];
+        document.getElementById("transaction-date").value = today;
+      }
+
+      function openViewMoreModal() {
+        viewMoreModal.style.display = "flex";
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+      }
+
+      // Close Modal Functions
+      function closeAddAccountModal() {
+        addAccountModal.style.display = "none";
+        document.body.style.overflow = "auto"; // Re-enable scrolling
+        document.getElementById("add-account-form").reset();
+      }
+
+      function closeAddTransactionModal() {
+        addTransactionModal.style.display = "none";
+        document.body.style.overflow = "auto"; // Re-enable scrolling
+        document.getElementById("add-transaction-form").reset();
+      }
+
+      function closeViewMoreModal() {
+        viewMoreModal.style.display = "none";
+        document.body.style.overflow = "auto"; // Re-enable scrolling
+      }
+
+      // Close modal when clicking outside content
+      function setupOutsideClickClose(modal, closeFunction) {
+        modal.addEventListener("click", function (event) {
+          if (event.target === modal) {
+            closeFunction();
+          }
+        });
+      }
+
+      // Close modal with Escape key
+      function setupEscapeKeyClose(closeFunction) {
+        document.addEventListener("keydown", function (event) {
+          if (event.key === "Escape") {
+            closeFunction();
+          }
+        });
+      }
+
+      // Form Submission Handlers
+      function handleAddAccountForm(event) {
+        event.preventDefault();
+
+        // Get form values
+        const accountName = document.getElementById("account-name").value;
+        const accountType = document.getElementById("account-type").value;
+        const initialBalance = document.getElementById("initial-balance").value;
+
+        // In a real app, you would send this data to your backend
+        console.log("Adding account:", {
+          name: accountName,
+          type: accountType,
+          balance: initialBalance,
+        });
+
+        // Show success message
+        alert(`Account "${accountName}" added successfully!`);
+
+        // Close modal
+        closeAddAccountModal();
+      }
+
+      function handleAddTransactionForm(event) {
+        event.preventDefault();
+
+        // Get form values
+        const transactionType =
+          document.getElementById("transaction-type").value;
+        const description = document.getElementById(
+          "transaction-description"
+        ).value;
+        const amount = document.getElementById("transaction-amount").value;
+        const date = document.getElementById("transaction-date").value;
+        const category = document.getElementById("transaction-category").value;
+        const account = document.getElementById("transaction-account").value;
+
+        // In a real app, you would send this data to your backend
+        console.log("Adding transaction:", {
+          type: transactionType,
+          description: description,
+          amount: amount,
+          date: date,
+          category: category,
+          account: account,
+        });
+
+        // Show success message
+        alert(`Transaction "${description}" added successfully!`);
+
+        // Close modal
+        closeAddTransactionModal();
+      }
+
+      // Initialize Event Listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        // Open modal buttons
+        document
+          .getElementById("open-add-account")
+          .addEventListener("click", openAddAccountModal);
+        document
+          .getElementById("open-add-transaction")
+          .addEventListener("click", openAddTransactionModal);
+        document
+          .getElementById("open-view-more")
+          .addEventListener("click", openViewMoreModal);
+
+        // Close modal buttons
+        document
+          .getElementById("close-add-account")
+          .addEventListener("click", closeAddAccountModal);
+        document
+          .getElementById("cancel-add-account")
+          .addEventListener("click", closeAddAccountModal);
+
+        document
+          .getElementById("close-add-transaction")
+          .addEventListener("click", closeAddTransactionModal);
+        document
+          .getElementById("cancel-add-transaction")
+          .addEventListener("click", closeAddTransactionModal);
+
+        document
+          .getElementById("close-view-more")
+          .addEventListener("click", closeViewMoreModal);
+        document
+          .getElementById("close-view-more-btn")
+          .addEventListener("click", closeViewMoreModal);
+
+        // Form submissions
+        document
+          .getElementById("add-account-form")
+          .addEventListener("submit", handleAddAccountForm);
+        document
+          .getElementById("add-transaction-form")
+          .addEventListener("submit", handleAddTransactionForm);
+
+        // Close modals when clicking outside
+        setupOutsideClickClose(addAccountModal, closeAddAccountModal);
+        setupOutsideClickClose(addTransactionModal, closeAddTransactionModal);
+        setupOutsideClickClose(viewMoreModal, closeViewMoreModal);
+
+        // Close modals with Escape key
+        setupEscapeKeyClose(closeAddAccountModal);
+        setupEscapeKeyClose(closeAddTransactionModal);
+        setupEscapeKeyClose(closeViewMoreModal);
+      });
+    </script>
+  </body>
+</html>
