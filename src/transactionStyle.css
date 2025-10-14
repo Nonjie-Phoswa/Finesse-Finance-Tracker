@@ -278,6 +278,7 @@ nav {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding-right: 10px;
 }
 
 .card-actions {
@@ -654,7 +655,6 @@ footer {
   transform: translateY(-2px);
 }
 
-/* Modal Overlay */
 .modal-overlay {
   display: none;
   position: fixed;
@@ -678,7 +678,6 @@ footer {
   }
 }
 
-/* Modal Content */
 .modal-content {
   background-color: var(--white);
   border-radius: var(--radius);
@@ -687,6 +686,9 @@ footer {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   animation: slideUp 0.3s ease;
   overflow: hidden;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes slideUp {
@@ -739,6 +741,8 @@ footer {
 
 .modal-body {
   padding: 20px;
+   overflow-y: auto;
+  -webkit-overflow-scrolling: touch; 
 }
 
 .modal-footer {
